@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500&display=swap');
+
+.app-museo { background: #0f0e0b !important; }
+
+/* HERO */
+.sezione-hero { position: relative; min-height: 480px; display: flex; align-items: center; overflow: hidden; }
+.sfondo-hero {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, #2a1f0a 0%, #0f0e0b 70%);
+}
+.sfondo-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1' fill='%23c9a84c' fill-opacity='0.08'/%3E%3C/svg%3E");
+}
+.contenuto-hero { position: relative; z-index: 1; }
+.occhiello { font-family: 'Cormorant Garamond', serif; font-size: 0.75rem; letter-spacing: 4px; color: #c9a84c; }
+.titolo-hero { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: #f0e6c8; line-height: 1.1; }
+.sottotitolo-hero { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #8a7a5a; line-height: 1.6; }
+.modulo-ricerca { max-width: 560px; }
+.campo-ricerca :deep(.v-field) { box-shadow: 0 0 0 1px #3a3020; }
+.chip-suggerimento { font-family: 'Cormorant Garamond', serif; cursor: pointer; transition: all .2s; }
+.chip-suggerimento:hover { background: #c9a84c22 !important; }
+
+/* RISULTATI */
+.etichetta-risultati { font-size: 0.7rem; letter-spacing: 3px; color: #c9a84c; font-family: 'Cormorant Garamond', serif; }
+.testo-ultima-ricerca { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #f0e6c8; }
+
+/* CARDS */
+.scheda-card {
+  background: #1a1814 !important;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+  border: 1px solid #2a2418;
+}
+.scheda-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px #00000088 !important; }
+.scheda-card:hover .overlay-foto { opacity: 1; }
+.contenitore-foto { position: relative; overflow: hidden; }
+.foto-opera { transition: transform .4s ease; }
+.scheda-card:hover .foto-opera { transform: scale(1.05); }
+.overlay-foto {
+  position: absolute; inset: 0;
+  background: #0008;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity .25s ease;
+}
+.nome-opera {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; color: #e8d9b5; line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  margin: 0;
+}
+.nome-autore { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; color: #8a7a5a; margin: 4px 0 0; }
+.anno-opera { font-size: 0.75rem; color: #6a5a3a; font-family: 'Cormorant Garamond', serif; }
+.stato-vuoto { opacity: .5; }

@@ -1,0 +1,9 @@
+const APIkey = 'chiave'
+
+export async function cercaOpere(ricerca, pagina = 1) {
+  const inizio = (pagina - 1) * 20 + 1
+  const url = `https://api.europeana.eu/record/v2/search.json?wskey=${APIkey}&query=${encodeURIComponent(ricerca)}&qf=TYPE:IMAGE&rows=20&start=${inizio}&profile=rich`
+  const risposta = await fetch(url)
+  const dati = await risposta.json()
+  return dati.items || []
+}

@@ -1,0 +1,46 @@
+import { HfInference } from '@huggingface/inference'
+
+
+const TOKENhg = 'chiaveg'
+
+const hf = new HfInference(TOKENhg)
+
+function costruisciPrompt(opera) {
+  const titolo = opera?.title?.[0] || 'Opera senza titolo';
+  const autore = opera?.dcCreator?.[0] || 'Autore sconosciuto';
+  const paese = opera?.country?.[0] || 'N/D';
+  const data = opera?.year?.[0] || 'Data ignota';
+  const istituzione = opera?.dataProvider?.[0] || 'N/D';
+
+  return `Sei un esperto d'arte. Descrivi in modo coinvolgente questa opera:
+Titolo: ${titolo}
+Autore: ${autore}
+Paese: ${paese}
+Data: ${data}
+Istituzione: ${istituzione}
+
+Fornisci: contesto storico, stile artistico, curiosità e importanza culturale. Max 200 parole, in italiano. Riponndi direttamente con la descrizione, senza preamboli.`;
+}
+
+export async function chiediAGemini(opera) {
+  try {
+    const promptPronto = costruisciPrompt(opera);
+
+    // Chiamiamo il modello Llama 3 tramite Hugging Face
+    const risposta = await hf.chatCompletion({
+      model: 'meta-llama/Meta-Llama-3-8B-Instruct',
+      messages: [
+        { role: 'user', content: promptPronto }
+      ],
+      max_tokens: 500,
+      temperature: 0.7,
+    });
+
+    // Estraiamo il testo della risposta
+    return risposta.choices[0].message.content || 'Analisi non disponibile.';
+
+  } catch (errore) {
+    console.error("Errore con Hugging Face:", errore);
+    return `Errore nell'analisi AI (HF): ${errore.message}`;
+  }
+}
