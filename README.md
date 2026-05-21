@@ -13,7 +13,7 @@ L'applicazione permette agli utenti di:
   -Vuetify 3: Framework UI personalizzato usando un tema scuro con dettagli in oro per richiamare l'estetica elegante e raffinata dei musei europei.
  API:
   -API Europeana: API utilizzata per ricevere le opere d'arte. È il database digitale ufficiale dell'Unione Europea per il patrimonio    culturale, interrogato con parametri specifici per filtrare esclusivamente contenuti multimediali di tipo immagine.
-  -API Hugging Face: endpoint di Hugging Face sfruttato per interrogare il modello Llama 3 e ricevere informazioni dettagliate sulle opere.
+  -API Hugging Face: endpoint di Hugging Face sfruttato per interrogare il modello Llama 3 e ricevere informazioni dettagliate sulle opere. 
 =======
 # MUSEO_licini
 >>>>>>> 39af8af7a913c1c7fe1d422b7ccc28f077086323
